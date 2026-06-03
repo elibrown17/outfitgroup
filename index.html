@@ -40,24 +40,28 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 4rem; height: 64px;
+  flex-wrap: nowrap;
+  padding: 0 3rem; height: 64px;
   background: rgba(0, 48, 87, 0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(254,80,0,0.3);
+  white-space: nowrap;
 }
 .nav-logo {
   font-family: 'Syne', sans-serif;
   font-size: 1.25rem; font-weight: 800;
   color: var(--white); letter-spacing: -0.02em;
-  text-decoration: none;
+  text-decoration: none; line-height: 1;
+  flex-shrink: 0;
 }
-.nav-logo .slash { color: var(--orange); }
+.nav-logo .slash { color: var(--orange); font-weight: 800; }
 .nav-logo .dot { color: #555; font-weight: 400; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; flex-shrink: 0; }
 .nav-links a {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #aaa; text-decoration: none; transition: color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.01em;
+  color: #bbb; text-decoration: none; transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--orange); }
 .nav-cta {
@@ -126,20 +130,20 @@ nav {
 
 .hero-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-size: clamp(3.5rem, 8vw, 7rem);
   font-weight: 800; line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--white);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
 }
-.hero-title .slash { color: var(--orange); }
-.hero-title .muted { color: #444; font-weight: 400; }
+.hero-title .slash { color: var(--orange); font-weight: 800; }
+.hero-title .muted { color: #444; font-weight: 300; }
 
 .hero-tagline {
-  font-size: 1.15rem; line-height: 1.6;
-  color: #aaa; font-weight: 300;
-  max-width: 520px; margin-bottom: 2.5rem;
+  font-size: 1.2rem; line-height: 1.65;
+  color: #bbb; font-weight: 300;
+  max-width: 540px; margin-bottom: 2.5rem;
   opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
 }
 .hero-tagline strong { color: var(--offwhite); font-weight: 500; }
@@ -176,20 +180,32 @@ nav {
 .btn-secondary:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
 
 .hero-stats {
-  display: flex; gap: 3rem;
+  display: flex; gap: 0;
   margin-top: 4rem; padding-top: 3rem;
   border-top: 1px solid rgba(255,255,255,0.08);
   opacity: 0; animation: fadeUp 0.8s 0.8s ease forwards;
+  flex-wrap: wrap;
+}
+.hero-stats > div {
+  flex: 1; min-width: 130px;
+  padding: 0 2rem 0 0;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  margin-right: 2rem;
+}
+.hero-stats > div:last-child {
+  border-right: none;
+  margin-right: 0;
 }
 .hero-stat-val {
   font-family: 'DM Mono', monospace;
-  font-size: 2.8rem; color: var(--orange); line-height: 1;
-  margin-bottom: 0.3rem;
+  font-size: 1.65rem; color: var(--orange); line-height: 1.15;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
 }
 .hero-stat-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: #555;
+  color: #777;
 }
 
 @keyframes fadeUp {
@@ -216,9 +232,9 @@ nav {
 
 .section-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.75rem, 3.5vw, 3.2rem);
   font-weight: 800; color: var(--navy);
-  letter-spacing: -0.03em; line-height: 1.05;
+  letter-spacing: -0.02em; line-height: 1.1;
   margin-bottom: 1rem;
 }
 
@@ -317,9 +333,9 @@ nav {
 }
 .vertical-headline {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
   font-weight: 800; color: var(--white);
-  letter-spacing: -0.03em; line-height: 1.05;
+  letter-spacing: -0.02em; line-height: 1.1;
   margin-bottom: 1rem;
 }
 .vertical-headline .accent { color: var(--orange); }
@@ -342,7 +358,7 @@ nav {
   flex-shrink: 0; margin-top: 0.05rem;
 }
 .benefit-text {
-  font-size: 0.9rem; color: #ccc; line-height: 1.5;
+  font-size: 0.9rem; color: #e8e8e8; line-height: 1.5;
 }
 .benefit-text strong { color: var(--white); display: block; margin-bottom: 0.2rem; font-size: 0.85rem; }
 
@@ -359,8 +375,9 @@ nav {
 }
 .stat-card .val {
   font-family: 'DM Mono', monospace;
-  font-size: 2.4rem; color: var(--orange); line-height: 1;
+  font-size: 2.4rem; color: var(--orange); line-height: 1.1;
   margin-bottom: 0.4rem;
+  word-break: break-word;
 }
 .stat-card .lbl {
   font-family: 'DM Mono', monospace;
@@ -611,12 +628,12 @@ footer {
 }
 .footer-logo {
   font-family: 'Syne', sans-serif;
-  font-size: 1.4rem; font-weight: 800;
+  font-size: 1.25rem; font-weight: 800;
   color: var(--white); text-decoration: none;
   letter-spacing: -0.02em;
 }
-.footer-logo .slash { color: var(--orange); }
-.footer-logo .dot { color: #444; font-weight: 400; }
+.footer-logo .slash { color: var(--orange); font-weight: 800; }
+.footer-logo .dot { color: #555; font-weight: 400; }
 .footer-tagline {
   font-family: 'DM Mono', monospace;
   font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -706,15 +723,21 @@ footer {
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
   .hero { padding: 7rem 1.5rem 4rem; }
-  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .hero-stats { gap: 1.25rem; flex-wrap: wrap; }
+  .hero-stat-val { font-size: 1.4rem !important; }
+  .hero-stats > div { min-width: 100px; padding: 0 1rem 0 0; margin-right: 1rem; }
+  .hero-tagline { font-size: 1rem; }
   .what, .production, .trusted, .how, .cta-section { padding: 4rem 1.5rem; }
+  #video { padding: 4rem 1.5rem; }
   .verticals-header { padding: 4rem 1.5rem 2rem; }
-  .tabs { padding: 0 1.5rem; }
+  .tabs { padding: 0 1.5rem; flex-direction: column; gap: 4px; }
+  .tab { max-width: 100%; text-align: left; }
   .tab-content { padding: 0 1.5rem 4rem; }
   .what-grid { grid-template-columns: 1fr; }
   .vertical-layout { grid-template-columns: 1fr; }
-  .vertical-right { margin-top: 2rem; }
+  .vertical-right { margin-top: 2rem; grid-template-columns: 1fr 1fr; }
   .production-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .cta-title { font-size: clamp(1.8rem, 6vw, 3rem) !important; }
   .steps { grid-template-columns: 1fr 1fr; }
   .logo-strip { flex-direction: column; }
   .logo-item { border-right: none; border-bottom: 1px solid var(--lgray); width: 100%; }
@@ -766,11 +789,11 @@ footer {
         <div class="hero-stat-label">Order to Ship</div>
       </div>
       <div>
-        <div class="hero-stat-val">∞</div>
+        <div class="hero-stat-val">Unlimited</div>
         <div class="hero-stat-label">Design Options</div>
       </div>
       <div>
-        <div class="hero-stat-val">0</div>
+        <div class="hero-stat-val">Zero</div>
         <div class="hero-stat-label">Inventory Required</div>
       </div>
       <div>
@@ -900,11 +923,11 @@ footer {
             <div class="lbl">Order to Worldwide Shipping</div>
           </div>
           <div class="stat-card">
-            <div class="val">∞</div>
+            <div class="val" style="font-size:1.5rem;letter-spacing:-0.02em;">Unlimited</div>
             <div class="lbl">Player Design Options</div>
           </div>
           <div class="stat-card">
-            <div class="val">0</div>
+            <div class="val" style="font-size:1.5rem;letter-spacing:-0.02em;">Zero</div>
             <div class="lbl">Minimum Order</div>
           </div>
           <div class="stat-card">
@@ -964,11 +987,11 @@ footer {
         </div>
         <div class="vertical-right">
           <div class="stat-card">
-            <div class="val">∞</div>
+            <div class="val" style="font-size:1.5rem;letter-spacing:-0.02em;">Unlimited</div>
             <div class="lbl">New Campus Markets to Tap</div>
           </div>
           <div class="stat-card">
-            <div class="val">0</div>
+            <div class="val" style="font-size:1.5rem;letter-spacing:-0.02em;">Zero</div>
             <div class="lbl">Leftover Stock</div>
           </div>
           <div class="stat-card">
